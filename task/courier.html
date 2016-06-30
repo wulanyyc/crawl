@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/favicon.ico" type="image/x-icon" rel="icon">
+  <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <link href="//static.sudiyi.cn/styles/cleanzone.css" media="screen" rel="stylesheet" />
+<link href="//static.sudiyi.cn/styles/user_center_ms.css" media="screen" rel="stylesheet" />
+  <script src="//static.sudiyi.cn/scripts/sdy.js"></script>
+      <title>快递员列表 - 用户管理系统</title>
+
+</head>
+<body>
+<input type="hidden" id="flash-success" value=""/>
+<input type="hidden" id="flash-error" value=""/>
+
+<div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header dropdown">
+        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+          <img alt="Logo" src="/logo.png" width="32" height="32">
+          <span>用户管理系统</span>
+        </a>
+
+        <div class="dropdown-menu system-menu">
+              <ul class="system-menu-list">
+      
+<li><a href="/cas/outbound/sudiyi_epms"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_epms/logo.png" width="32" height="32"><span>人员管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_operation"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_operation/logo.png" width="32" height="32"><span>运维管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_bms_web"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_bms_web/logo.png" width="32" height="32"><span>业务管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_vms"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_vms/logo.png" width="32" height="32"><span>版本管理系统</span></a></li>
+    </ul>
+
+        </div>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right user-nav">
+    <li class="dropdown profile_menu">
+      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <img alt="Default" height="30" src="https://home.sudiyi.cn/upload/avatar/default.png" width="30" />
+        <span>李黎明</span>
+      </a>
+
+      <ul class="dropdown-menu">
+        <li><a href="http://home.sudiyi.cn">返回导航页</a></li>
+        <li><a href="/admin/logout">注 销</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right not-nav" style="margin-top: 1px !important;display: none;">
+    <li class="button">
+      <a href="javascript:alert('功能尚未开放！');"><i class="fa fa-comments"></i><span class="bubble">2</span></a>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+<div id="cl-wrapper">
+  <div class="cl-sidebar">
+    <div class="cl-navblock">
+  <div class="menu-space">
+    <div class="content">
+      <ul class="cl-vnavigation" id="sider_nav">
+        <li class="">
+          <a class="nav_link" href="/admin"><i class="fa fa-home"></i>管理首页</a>
+        </li>
+
+            <li>
+              <a href="javascript:;"><i class="fa fa-user"></i><span>用户管理</span></a>
+              <ul class="sub-menu">
+                <li class="">
+                  <a class="nav_link" href="/admin/users"><i class="fa fa-user"></i>手机用户</a>
+                </li>
+                <li class="">
+                  <a class="nav_link" href="/admin/weixin_users"><i class="fa fa-comment"></i>微信用户</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="javascript:;"><i class="fa fa-suitcase"></i><span>快递员管理</span></a>
+              <ul class="sub-menu">
+                    <li class="active">
+                      <a class="nav_link" href="/admin/couriers">快递员列表</a>
+                    </li>
+
+                    <li class="">
+                      <a class="nav_link" href="/admin/courier_companies">快递公司列表</a>
+                    </li>
+
+                    <li class="">
+                      <a class="nav_link" href="/admin/courier_company_sms/plans">公司短信群发</a>
+                    </li>
+
+
+              </ul>
+            </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-right collapse-button" style="padding:15px;"></div>
+</div>
+
+  </div>
+
+  <div class="container-fluid" id="pcont">
+    
+<div class="page-head">
+  <h2>快递员列表</h2>
+<ol class="breadcrumb">
+<li><a href="/admin">管理首页</a></li>
+<li><a href="javascript:;">快递员管理</a></li>
+<li class="active">快递员列表</li>
+</ol>
+</div>
+
+<div class="page-body list-courier">
+  <div class="row">
+    <div class="row-md-12">
+      <div class="table-search">
+        <!--     <form method="get" action="/admin/couriers">
+      <input type="text" name="q" placeholder="输入手机号或姓名进行搜索"/>
+      <button type="submit">搜索</button>
+    </form>
+ -->
+        <form method="get" action='/admin/couriers'>
+          联系电话/公司名称：<input type="text" name="q"  placeholder="输入手机号或姓名进行搜索"/>
+          所在城市：<input type="text" name="location"  placeholder="输入城市 例如： 成都 "/>
+          <input type="hidden" name="verify" value="" />
+          <button type="submit">搜索</button>
+        </form>
+      </div>
+
+      <div class="tab-container">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="/admin/couriers">所有快递员</a>
+          </li>
+          <li class="">
+            <a href="/admin/couriers?verify=1">待审核</a>
+          </li>
+          <li class="">
+            <a href="/admin/couriers?verify=3">审核失败</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active">
+                <div class="table-responsive">
+  <table class="table table-bordered" id="datatable">
+    <thead>
+    <tr>
+      <th>快递员编号</th>
+      <th>姓名</th>
+      <th>手机号</th>
+      <th>投递卡号</th>
+      <th>快递品牌</th>
+      <th>城市</th>
+      <th>服务网点</th>
+      <th>审核状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>405930</td>
+          <td>招润敬</td>
+          <td style="width: 100px;">18929989460</td>
+          <td></td>
+          <td>如风达</td>
+          <td>广东省/佛山市/城区</td>
+          <td>佛山分部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405930">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405929</td>
+          <td>汤惠端</td>
+          <td style="width: 100px;">15059249488</td>
+          <td></td>
+          <td>中通快递</td>
+          <td>福建省/漳州市/龙海市</td>
+          <td>龙池分公司</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405929">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405928</td>
+          <td>韩彬</td>
+          <td style="width: 100px;">13375331300</td>
+          <td></td>
+          <td>百世汇通</td>
+          <td>山东省/淄博市/张店区</td>
+          <td>淄博汇通</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405928">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405927</td>
+          <td>孙海</td>
+          <td style="width: 100px;">13761671228</td>
+          <td></td>
+          <td>联邦快递</td>
+          <td>上海市/青浦区</td>
+          <td>联邦快递（中国）有限公司上海分公司</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405927">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405926</td>
+          <td>李智</td>
+          <td style="width: 100px;">15124597218</td>
+          <td></td>
+          <td>顺丰速运</td>
+          <td>黑龙江省/哈尔滨市/南岗区</td>
+          <td>顺丰快递</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405926">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405925</td>
+          <td>秦欢</td>
+          <td style="width: 100px;">18505538214</td>
+          <td></td>
+          <td>申通快递</td>
+          <td>安徽省/芜湖市/镜湖区</td>
+          <td>芜湖申通快递</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405925">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405924</td>
+          <td>李创亮</td>
+          <td style="width: 100px;">13433370250</td>
+          <td></td>
+          <td>顺丰速运</td>
+          <td>广东省/汕头市/龙湖区</td>
+          <td>龙湖区新溪镇</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405924">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405923</td>
+          <td>郭其强</td>
+          <td style="width: 100px;">18052718515</td>
+          <td></td>
+          <td>优速快递</td>
+          <td>江苏省/常州市/新北区</td>
+          <td>常州市优速快递有限公司新北二部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405923">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405922</td>
+          <td>周冬</td>
+          <td style="width: 100px;">18696178937</td>
+          <td></td>
+          <td>天天快递</td>
+          <td>湖北省/武汉市/东西湖区</td>
+          <td>光谷生物城点部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405922">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405921</td>
+          <td>宋德明</td>
+          <td style="width: 100px;">13631249449</td>
+          <td></td>
+          <td>圆通速递</td>
+          <td>广东省/东莞市/寮步镇</td>
+          <td>圆通速递</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405921">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405920</td>
+          <td>冯利国</td>
+          <td style="width: 100px;">15524560136</td>
+          <td></td>
+          <td>韵达快递</td>
+          <td>辽宁省/大连市/金州区</td>
+          <td>大连开发区</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405920">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405919</td>
+          <td>荣建龙</td>
+          <td style="width: 100px;">13953509740</td>
+          <td></td>
+          <td>顺丰速运</td>
+          <td>山东省/烟台市/芝罘区</td>
+          <td>速运事业群华北大区速运烟台区市中速运管理部前进路速运营业点</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405919">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405918</td>
+          <td>刘龚杰</td>
+          <td style="width: 100px;">15675306366</td>
+          <td></td>
+          <td>顺丰速运</td>
+          <td>湖南省/株洲市/荷塘区</td>
+          <td>合泰点部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405918">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405917</td>
+          <td>黄虎</td>
+          <td style="width: 100px;">18173210771</td>
+          <td></td>
+          <td>中通快递</td>
+          <td>湖南省/湘潭市/岳塘区</td>
+          <td>湘潭市岳塘区六部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405917">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405916</td>
+          <td>边博海</td>
+          <td style="width: 100px;">15319201003</td>
+          <td>3559681A1E</td>
+          <td>圆通速递</td>
+          <td>陕西省/宝鸡市/渭滨区</td>
+          <td>宝鸡桥南分部</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405916">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405915</td>
+          <td>刘振</td>
+          <td style="width: 100px;">13007348182</td>
+          <td></td>
+          <td>国通快递</td>
+          <td>湖南省/衡阳市/石鼓区</td>
+          <td>国通快递石鼓十二部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405915">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405914</td>
+          <td>石桃园</td>
+          <td style="width: 100px;">15617053078</td>
+          <td></td>
+          <td>韵达快递</td>
+          <td>浙江省/宁波市/海曙区</td>
+          <td>断塘公司</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405914">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405913</td>
+          <td>李元浩</td>
+          <td style="width: 100px;">18680573908</td>
+          <td></td>
+          <td>顺丰速运</td>
+          <td>广东省/东莞市</td>
+          <td>顺丰速运莞城分部</td>
+          <td>
+            <b style="color: #4d90fd">
+              待审核
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405913">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405912</td>
+          <td>周显昌</td>
+          <td style="width: 100px;">13896504972</td>
+          <td></td>
+          <td>百世汇通</td>
+          <td>重庆市/渝北区</td>
+          <td>人和分部</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405912">查看详情</a></td>
+        </tr>
+        <tr>
+          <td>405911</td>
+          <td>李林</td>
+          <td style="width: 100px;">13307305679</td>
+          <td></td>
+          <td>申通快递</td>
+          <td>湖南省/岳阳市/岳阳楼区</td>
+          <td>岳阳中南营业厅</td>
+          <td>
+            <b style="color: #60c060">
+              审核通过
+            </b>
+          </td>
+          <td><a href="/admin/couriers/405911">查看详情</a></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <div class="row table-footer">
+        <div class="col-sm-12 clearfix">
+      <div class="table-summary">
+        <div class="dataTables_info" id="datatable_info">
+          第 1 - 20 条记录 / 共 403929 条记录
+        </div>
+      </div>
+
+      <div class="dataTables_paginate paging_bs_normal"><ul class="pagination"><li class="disabled"><a href="#"><span class="fa fa-angle-left"></span>&nbsp;上一页</a></li> <li class="active"><a href="#">1</a></li> <li><a rel="next" href="/admin/couriers?page=2">2</a></li> <li><a href="/admin/couriers?page=3">3</a></li> <li><a href="/admin/couriers?page=4">4</a></li> <li><a href="/admin/couriers?page=5">5</a></li> <li class="disabled"><a href="#">…</a></li> <li><a href="/admin/couriers?page=20197">20197</a></li> <li><a class="next_page" rel="next" href="/admin/couriers?page=2">下一页&nbsp;<span class="fa fa-angle-right"></span></a></li></ul></div>
+    </div>
+
+  </div>
+</div>
+
+<form id="delete-courier" action="/admin/couriers/delete" method="post" style="display: none;">
+  <input type="hidden" name="_method" value="delete"/>
+</form>
+
+<script>
+    $(function () {
+        $("a.delete").on("click", function () {
+            var courier_id = $(this).attr('rel');
+
+            if (confirm("确定要删除吗？")) {
+                $("#delete-courier").attr("action", "/admin/couriers/" + courier_id).submit();
+            }
+            return false;
+        });
+    });
+</script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>
+    sdy.require(['app/user_center_ms', 'jquery.niftymodals']);
+</script>
+</body>
+</html>
+

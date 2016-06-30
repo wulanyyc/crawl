@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/favicon.ico" type="image/x-icon" rel="icon">
+  <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <link href="//static.sudiyi.cn/styles/cleanzone.css" media="screen" rel="stylesheet" />
+<link href="//static.sudiyi.cn/styles/user_center_ms.css" media="screen" rel="stylesheet" />
+  <script src="//static.sudiyi.cn/scripts/sdy.js"></script>
+      <title>【快递员】张玉水 - 用户管理系统</title>
+
+</head>
+<body>
+<input type="hidden" id="flash-success" value=""/>
+<input type="hidden" id="flash-error" value=""/>
+
+<div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header dropdown">
+        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+          <img alt="Logo" src="/logo.png" width="32" height="32">
+          <span>用户管理系统</span>
+        </a>
+
+        <div class="dropdown-menu system-menu">
+              <ul class="system-menu-list">
+      
+<li><a href="/cas/outbound/sudiyi_epms"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_epms/logo.png" width="32" height="32"><span>人员管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_operation"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_operation/logo.png" width="32" height="32"><span>运维管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_bms_web"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_bms_web/logo.png" width="32" height="32"><span>业务管理系统</span></a></li>
+<li><a href="/cas/outbound/sudiyi_vms"><img alt="Logo" src="http://static.sudiyi.cn/images/sudiyi_vms/logo.png" width="32" height="32"><span>版本管理系统</span></a></li>
+    </ul>
+
+        </div>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right user-nav">
+    <li class="dropdown profile_menu">
+      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <img alt="Default" height="30" src="https://home.sudiyi.cn/upload/avatar/default.png" width="30" />
+        <span>李黎明</span>
+      </a>
+
+      <ul class="dropdown-menu">
+        <li><a href="http://home.sudiyi.cn">返回导航页</a></li>
+        <li><a href="/admin/logout">注 销</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right not-nav" style="margin-top: 1px !important;display: none;">
+    <li class="button">
+      <a href="javascript:alert('功能尚未开放！');"><i class="fa fa-comments"></i><span class="bubble">2</span></a>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+<div id="cl-wrapper">
+  <div class="cl-sidebar">
+    <div class="cl-navblock">
+  <div class="menu-space">
+    <div class="content">
+      <ul class="cl-vnavigation" id="sider_nav">
+        <li class="">
+          <a class="nav_link" href="/admin"><i class="fa fa-home"></i>管理首页</a>
+        </li>
+
+            <li>
+              <a href="javascript:;"><i class="fa fa-user"></i><span>用户管理</span></a>
+              <ul class="sub-menu">
+                <li class="">
+                  <a class="nav_link" href="/admin/users"><i class="fa fa-user"></i>手机用户</a>
+                </li>
+                <li class="">
+                  <a class="nav_link" href="/admin/weixin_users"><i class="fa fa-comment"></i>微信用户</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="javascript:;"><i class="fa fa-suitcase"></i><span>快递员管理</span></a>
+              <ul class="sub-menu">
+                    <li class="active">
+                      <a class="nav_link" href="/admin/couriers">快递员列表</a>
+                    </li>
+
+                    <li class="">
+                      <a class="nav_link" href="/admin/courier_companies">快递公司列表</a>
+                    </li>
+
+                    <li class="">
+                      <a class="nav_link" href="/admin/courier_company_sms/plans">公司短信群发</a>
+                    </li>
+
+
+              </ul>
+            </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-right collapse-button" style="padding:15px;"></div>
+</div>
+
+  </div>
+
+  <div class="container-fluid" id="pcont">
+    
+<div class="page-body">
+  <div class="detail-summary">
+  <input type="hidden" id="_user_id" value="39761980"/>
+  <input type="hidden" id="_user_verify" value="1"/>
+  <input type="hidden" id="_courier_id" value="406089"/>
+
+  <div class="block-flat">
+    <ul class="detail-summary-list clearfix">
+
+      <li class="media-block clearfix">
+        <img src="/placeholder.jpg" width="80px"/>
+
+        <div class="media-block-content">
+          <h1>张玉水<span class="alias"></span></h1>
+
+          <p>
+            <span class="status-user-ok" data-ok="正常" data-banned="已禁用"></span>
+          </p>
+        </div>
+      </li>
+
+      <li class="detail-item-contact">
+        <ul>
+          <li><i class="fa fa-mobile-phone"></i>18652270517</li>
+          <li><i class="fa fa-envelope"></i>-</li>
+          <li><i class="fa fa-rmb"></i>0.00 元</li>
+        </ul>
+      </li>
+
+      <li class="detail-item-meta">
+        <p class="user-meta-code"><strong>用户编号: 39761980</strong></p>
+
+        <p>用户注册时间：2016-06-29 14:31:26</p>
+
+        <p>用户登录时间：2016-06-29 14:37:25</p>
+
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+
+  <div class="detail-account">
+    <div class="tab-container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#BaseInfo" data-toggle="tab" data-href="/admin/couriers/406089/base_info">账号信息</a></li>
+<li><a href="#StatusLogs" data-toggle="tab" data-href="/admin/couriers/406089/status_logs">状态变更记录</a></li>
+<li><a href="#ActionLogs" data-toggle="tab" data-href="/admin/couriers/406089/action_logs">用户操作记录</a></li>
+<li><a href="#ChargeLogs" data-toggle="tab" data-href="/admin/couriers/406089/charge_logs">账户收入明细</a></li>
+<li><a href="#PaymentLogs" data-toggle="tab" data-href="/admin/couriers/406089/payment_logs">账户支出明细</a></li>
+<li><a href="#RefundLogs" data-toggle="tab" data-href="/admin/couriers/406089/refund_logs">账户退款明细</a></li>
+<li><a href="#IncomeExpandLogs" data-toggle="tab" data-href="/admin/couriers/406089/income_expand_logs">账户收支明细</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active cont" id="BaseInfo">
+          <ul class="detail-list-table">
+  <li>
+    <h3>登录信息</h3>
+    <table class="detail-table-basic">
+      <tbody>
+      <tr>
+        <th>手机:</th>
+        <td>18652270517</td>
+      </tr>
+      <tr>
+        <th>邮箱:</th>
+        <td>-</td>
+      </tr>
+      <tr>
+        <th>昵称:</th>
+        <td>-</td>
+      </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h3>个人信息</h3>
+    <table class="detail-table-basic">
+      <tbody>
+      <tr>
+        <th>姓名:</th>
+        <td>张玉水</td>
+      </tr>
+      <tr>
+        <th>性别:</th>
+        <td>未知</td>
+      </tr>
+      <tr>
+        <th>生日:</th>
+        <td>-</td>
+      </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<script type="text/javascript">
+    sdy(function () {
+        var $container = $('.detail-summary');
+        var getCurrentStatus = function () {
+            return $container.find('.status-user-ok').length ? 'ok' : 'banned';
+        };
+        var oppositeStatus = function (status) {
+            return status == 'ok' ? 'banned' : 'ok';
+        };
+        var composeButton = function () {
+            return $([].join.call(arguments, ''));
+        };
+        var buttons = {
+            ok: composeButton(
+                    '<a class="btn btn-success btn-flat toggle-status-user">',
+                    '<i class="fa fa-check"></i>重新开启',
+                    '</a>'
+            ),
+            banned: composeButton(
+                    '<a class="btn btn-danger btn-flat toggle-status-user">',
+                    '<i class="fa fa-ban"></i>禁用账号',
+                    '</a>'
+            )
+        };
+
+        $('.detail-table-control').on('click', '.btn.toggle-status-user', function (e) {
+            e.preventDefault();
+            var $link = $(this);
+            if ($link.hasClass('submitting')) return false;
+            collectComment($link, function (comment) {
+                $link.addClass('submitting');
+                var status = getCurrentStatus();
+                var user_id = $("input#_user_id").val();
+                var target = '/admin/couriers/' + user_id + '/' + (status == 'ok' ? 'disable' : 'enable');
+
+                $.post(target, {_method: 'put', comment: comment}, function (result) {
+                    var msg_class, msg;
+                    if (result.code !== undefined) {
+                        if (result.code === 0) {
+                            $link.replaceWith(buttons[status]);
+                            $container.find('.status-user-' + status)
+                                    .removeClass('status-user-' + status)
+                                    .addClass('status-user-' + oppositeStatus(status));
+                            msg_class = 'success';
+                        } else {
+                            msg_class = 'danger'
+                        }
+
+                        msg = result.message;
+                    } else {
+                        msg_class = 'danger'
+                        msg = '服务器连接错误！';
+                    }
+
+                    $link.removeClass('submitting');
+
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: msg,
+                        class_name: msg_class
+                    });
+                });
+            });
+        });
+    });
+</script>
+
+        </div>
+        <div class="tab-pane cont" id="StatusLogs"></div>
+        <div class="tab-pane cont" id="ActionLogs"></div>
+        <div class="tab-pane cont" id="ChargeLogs"></div>
+        <div class="tab-pane cont" id="PaymentLogs"></div>
+        <div class="tab-pane cont" id="RefundLogs"></div>
+        <div class="tab-pane cont" id="IncomeExpandLogs"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="detail-extra">
+  <div class="panel-group accordion accordion-semi" id="accordion3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#">
+            <i class="fa fa-angle-right"></i>用户实名认证
+
+            <span class="status-profile status-profile-pending"
+                  data-incomplete="未认证"
+                  data-pending="待审核"
+                  data-pass="已认证"
+                  data-fail="认证失败">
+            </span>
+          </a>
+        </h4>
+      </div>
+
+      <div class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul class="detail-list-table">
+            <li>
+              <h3>身份信息</h3>
+              <table class="detail-table-basic">
+                <tbody>
+                <tr>
+                  <th>姓名:</th>
+                  <td>张玉水</td>
+                </tr>
+                <tr>
+                  <th>身份证号:</th>
+                  <td>320302196807092016</td>
+                </tr>
+                <tr>
+                  <th>身份证照片:</th>
+                  <td><img data-preview src="http://sudiyi.qiniudn.com/IMAGE_ID_CARD_FRONT_39761980_20160629143114.jpg?e=1788589874&token=FjPaDVD7dmXklVWXZmxPP90BQU-k_eNQcrojULXb:GxiNFaXdto0wjbYaoKNjvmjv0pw=" width="125px"/>
+<img data-preview src="http://sudiyi.qiniudn.com/IMAGE_ID_CARD_BACK_39761980_20160629143114.jpg?e=1788589874&token=FjPaDVD7dmXklVWXZmxPP90BQU-k_eNQcrojULXb:IzCAoossFSkFyyUOKJ-D9bVM0R0=" width="125px"/></td>
+                </tr>
+                </tbody>
+              </table>
+            </li>
+
+            <li>
+              <h3>认证历史</h3>
+                  还没有任何认证历史
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    sdy(function () {
+        $('.detail-table-control').on('click', '.btn-realname', function (e) {
+            e.preventDefault();
+            var $btn = $(this);
+            if ($btn.hasClass('submitting')) return false;
+            collectComment($btn, function (comment) {
+                $btn.addClass('submitting');
+
+                var user_id = $("input#_user_id").val();
+                var target = '/admin/users/' + user_id;
+                var cname = 'status-profile';
+
+                if ($btn.hasClass('btn-success')) {
+                    target += '/verify_success';
+                    cname += ' status-profile-pass';
+                } else {
+                    target += '/verify_failed';
+                    cname += ' status-profile-fail';
+                }
+
+                $.post(target, {_method: 'put', comment: comment}, function (result) {
+                    var msg_class, msg;
+                    if (result.code !== undefined) {
+                        if (result.code === 0) {
+                            $btn.parents('.panel').find('.status-profile').attr('class', cname);
+                            $("li.real_name_verify").hide();
+                            $btn.siblings().hide();
+                            msg_class = 'success';
+                            $("input#_user_verify").val(2);
+                        } else {
+                            msg_class = 'danger'
+                        }
+
+                        msg = result.message;
+                    } else {
+                        msg_class = 'danger'
+                        msg = '服务器连接错误！';
+                    }
+
+                    $btn.removeClass('submitting');
+
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: msg,
+                        class_name: msg_class
+                    });
+                });
+            });
+        });
+    });
+</script>
+
+
+  <div class="detail-extra">
+  <div class="panel-group accordion accordion-semi" id="accordion3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#">
+            <i class="fa fa-angle-right"></i>快递员审核
+            <span class="status-profile status-profile-pending"
+                  data-incomplete="未审核"
+                  data-pending="待审核"
+                  data-pass="审核通过"
+                  data-fail="审核失败">
+            </span>
+          </a>
+        </h4>
+      </div>
+
+      <div class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul class="detail-list-table">
+            <li>
+              <h3>快递员信息</h3>
+              <table class="detail-table-basic">
+                <tbody>
+                <tr>
+                  <th>快递品牌:</th>
+                  <td>邮政</td>
+                </tr>
+                <tr>
+                  <th>行政区域:</th>
+                  <td>
+                      江苏省/徐州市/云龙区
+                    </td>
+                </tr>
+                <tr>
+                  <th>所属网点:</th>
+                  <td>徐州邮政局</td>
+                </tr>
+                <tr>
+                  <th>管理角色:</th>
+                  <td>普通快递员</td>
+                </tr>
+                <tr>
+                  <th>账户关联:</th>
+                  <td>允许使用公司账户</td>
+                </tr>
+                <tr>
+                  <th>工作证:</th>
+                  <td><img data-preview src="http://sudiyi.qiniudn.com/IMAGE_WORK_CARD_39761980_20160629143114.jpg?e=1788589874&token=FjPaDVD7dmXklVWXZmxPP90BQU-k_eNQcrojULXb:yHkBsIu2IId67DWNWTlqJ0VnXgQ=" width="125px"/></td>
+                </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              <h3>速递易信息</h3>
+              <table class="detail-table-basic">
+                <tbody>
+                <tr>
+                  <th>投递卡号:</th>
+                  <td>
+                        未绑定
+                  </td>
+                </tr>
+                <tr>
+                  <th>投递范围:</th>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <th>协议文件:</th>
+                  <td>-</td>
+                </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              <h3>审核历史</h3>
+                  还没有任何审核历史
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    sdy.require('ui/collectText', function () {
+      sdy.checkComponent('sdy.ui.collectText', function() {
+        var collectText = sdy.ui.collectText;
+
+
+        $('.detail-table-control').on('click', '.btn-verify', function (e) {
+            e.preventDefault();
+            var user_verify = $("input#_user_verify").val();
+            if (user_verify != 2) {
+                alert("请先对用户进行实名认证！");
+                return false;
+            }
+
+            var $btn = $(this);
+            if ($btn.hasClass('submitting')) return false;
+            collectText($btn, function (comment) {
+                $btn.addClass('submitting');
+
+                var courier_id = $("input#_courier_id").val();
+                var target = '/admin/couriers/' + courier_id;
+                var cname = 'status-profile';
+
+                if ($btn.hasClass('btn-success')) {
+                    target += '/verify_success';
+                    cname += ' status-profile-pass';
+                } else {
+                    target += '/verify_failed';
+                    cname += ' status-profile-fail';
+                }
+
+                $.post(target, {_method: 'put', comment: comment}, function (result) {
+                    var msg_class, msg;
+                    if (result.code !== undefined) {
+                        if (result.code === 0) {
+                            $btn.parents('.panel').find('.status-profile').attr('class', cname);
+                            $("li.courier_verify").hide();
+                            $btn.siblings().hide();
+                            msg_class = 'success';
+                        } else {
+                            msg_class = 'danger'
+                        }
+
+                        msg = result.message;
+                    } else {
+                        msg_class = 'danger'
+                        msg = '服务器连接错误！';
+                    }
+
+                    $btn.removeClass('submitting');
+
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: msg,
+                        class_name: msg_class
+                    });
+                });
+
+                collectText.close();
+            });
+        });
+
+        $('body').on('click', '.unbind-card', function () {
+            var $container = $(this).parent();
+
+            if (confirm('确定要取消绑定此投递卡吗？')) {
+                var courier_id = $("input#_courier_id").val();
+
+                $.post('/admin/couriers/' + courier_id + '/unbind_card', {_method: 'put'}, function (result) {
+                    var msg_class, msg;
+                    if (result.code !== undefined) {
+                        if (result.code === 0) {
+                            $container.html('未绑定&nbsp;&nbsp;<a href="javascript:;" class="bind-card" title="请输入投递卡号或芯片号">绑定投递卡</a>');
+                            msg_class = 'success';
+                        } else {
+                            msg_class = 'danger'
+                        }
+
+                        msg = result.message;
+                    } else {
+                        msg_class = 'danger'
+                        msg = '服务器连接错误！';
+                    }
+
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: msg,
+                        class_name: msg_class
+                    });
+                });
+            }
+        });
+
+        $('body').on('click', '.bind-card', function (e) {
+            var $container = $(this).parent();
+            e.preventDefault();
+
+            var $btn = $(this);
+            if ($btn.hasClass('submitting')) return false;
+            collectText($btn, function (card_no) {
+                $btn.addClass('submitting');
+
+                var courier_id = $("input#_courier_id").val();
+                var target = '/admin/couriers/' + courier_id + '/bind_card';
+
+                $.post(target, {_method: 'put', card_no: card_no}, function (result) {
+                    var msg_class, msg;
+                    if (result.code !== undefined) {
+                        if (result.code === 0) {
+                            var card_info = '-';
+                            if (result.data !== undefined) {
+                                card_info = result.data.card_info;
+                            }
+
+                            $container.html(card_info + '&nbsp;&nbsp;<a href="javascript:;" class="unbind-card">取消绑定</a>');
+                            msg_class = 'success';
+                        } else {
+                            msg_class = 'danger'
+                        }
+
+                        msg = result.message;
+                    } else {
+                        msg_class = 'danger'
+                        msg = '服务器连接错误！';
+                    }
+
+                    $btn.removeClass('submitting');
+
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: msg,
+                        class_name: msg_class
+                    });
+                });
+
+                collectText.close();
+            });
+        });
+      });
+    });
+
+</script>
+
+</div>
+
+<script>
+    sdy(function () {
+        $('ul.nav-tabs li > a').on('click', function () {
+            var target_div = $(this).attr('href'),
+                    target_url = $(this).attr('data-href');
+
+            $.get(target_url, function (result) {
+                if (result.message !== undefined) {
+                    $.gritter.add({
+                        position: "bottom-right",
+                        title: result.message,
+                        class_name: 'danger'
+                    });
+                } else {
+                    $(target_div).html(result);
+                }
+            });
+        });
+    });
+</script>
+
+  </div>
+</div>
+
+<script>
+    sdy.require(['app/user_center_ms', 'jquery.niftymodals']);
+</script>
+</body>
+</html>
+
