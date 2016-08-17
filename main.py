@@ -47,6 +47,7 @@ class ThreadCrawl(threading.Thread):
                 try:
                     self.db.conn.ping()
                 except Exception, e:
+                    self.db.close()
                     self.db = getMysql()
 
                 crawl  = courier.Courier(url, self.db)
@@ -60,7 +61,7 @@ class ThreadCrawl(threading.Thread):
                     logging.info(url + ':' + ret)
             #signals to queue job is done
             self.queue.task_done()
-            time.sleep(0.1)
+            time.sleep(0.5)
 
 if __name__ == '__main__':
     cwd = os.getcwd()
@@ -102,7 +103,7 @@ if __name__ == '__main__':
 
     #spawn a pool of threads, and pass them queue instance
     queue = Queue.Queue()
-    for i in range(5):
+    for i in range(2):
         t = ThreadCrawl(queue, resource_db)
         t.setDaemon(True)
         t.start()
@@ -112,7 +113,7 @@ if __name__ == '__main__':
         if type(msg) is tuple:
             url = msg[1]
             queue.put((url), False, 1)
-        time.sleep(0.1)
+        time.sleep(0.5)
 
     #wait on the queue until everything has been processed
     queue.join()

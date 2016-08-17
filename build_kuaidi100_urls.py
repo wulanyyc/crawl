@@ -25,9 +25,10 @@ if __name__ == '__main__':
 
     # resource init
     resource_redis = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
+    
 
-    for i in range(1, 100000):
-        resource_redis.lpush(channel, "http://ucms.sudiyi.cn/admin/couriers/" + str(i))
-        intervel = divmod(i, 1000)
-        if intervel[1] == 0:
-            time.sleep(0.2)
+#for i in range(1, 100000):
+#        resource_redis.lpush(channel, "http://ucms.sudiyi.cn/admin/couriers/" + str(i))
+#        intervel = divmod(i, 1000)
+#        if intervel[1] == 0:
+#            time.sleep(0.2)
