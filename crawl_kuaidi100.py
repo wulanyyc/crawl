@@ -1,3 +1,4 @@
+#!/bin/env python
 #-*- coding:utf-8 –*-
 import urllib,urllib2,gzip,StringIO
 import sys,json,os,ConfigParser,time
